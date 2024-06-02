@@ -1,0 +1,7 @@
+.idea
+.env
+venv
+
+# Jupyter notebook
+.ipynb_checkpoints
+.Trash*
