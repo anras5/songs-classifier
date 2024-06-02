@@ -18,8 +18,7 @@ docker compose up
 ```shell
 cd classifier-app/backend
 docker build -f develop.dockerfile -t mlflow-develop-image .
-docker run -d -v "${PWD}:/app" -p 5000:5000 --name mlflow-develop --rm mlflow-develop-image
-docker exec -it mlflow-develop /bin/bash
+docker run -it -v "${PWD}:/app" -p 5000:5000 --rm mlflow-develop-image /bin/bash
 ```
 
 Change the `${PWD}` to `$(pwd)` if you are on Linux. If you have already built the image in the past skip the second
@@ -37,10 +36,4 @@ Script prints out `runid` at the end.
 
 ```shell
 mlflow models serve --model-uri runs:/<runid>/GradBoostClassifier --no-conda -p 5000 -h 0.0.0.0
-```
-
-**Remove the container**
-
-```shell
-docker container stop mlflow-develop
 ```
