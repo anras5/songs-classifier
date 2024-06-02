@@ -5,3 +5,5 @@ venv
 # Jupyter notebook
 .ipynb_checkpoints
 .Trash*
+
+classifier-app/backend/mlruns
