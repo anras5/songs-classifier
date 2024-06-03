@@ -1,6 +1,5 @@
 import streamlit as st
 
-st.title("Hello world app")
-st.header("This is my first Streamlit app")
+st.title("🎸📀 Songs Classifier App 🎧🎶")
 
-st.write("Hello, world!")
+st.markdown("**Search for your favorite song and discover to what genre it belongs!**")
