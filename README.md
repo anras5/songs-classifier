@@ -11,6 +11,9 @@ The jupyter lab is available at `localhost:8888`.
 
 ## Classifier App
 
+Create a `.env` file inside the `classifier-app/frontend` directory with the same structure as `.env.example`. Get your own
+Spotify credentials from [Spotify Developers Website](https://developer.spotify.com/dashboard).
+
 ```shell
 cd classifier-app
 docker compose up
