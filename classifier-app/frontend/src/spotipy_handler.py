@@ -25,7 +25,8 @@ class SpotipyHandler:
             name=search_result['name'],
             artist=search_result['album']['artists'][0]['name'],
             album_name=search_result['album']['name'],
-            album_photo=search_result['album']['images'][0]['url']
+            album_photo=search_result['album']['images'][0]['url'],
+            audio_preview=search_result['preview_url']
         )
         song_features = sp.audio_features(song.id)[0]
         song.features = SongFeatures(
