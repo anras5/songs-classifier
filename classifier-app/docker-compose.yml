@@ -5,3 +5,14 @@ services:
       dockerfile: production.dockerfile
     ports:
       - "5000:5000"
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./frontend:/app"
+    env_file:
+      - ./frontend/.env

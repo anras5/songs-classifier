@@ -7,11 +7,16 @@ cd data-analysis
 docker compose up
 ```
 
+The jupyter lab is available at `localhost:8888`.
+
 ## Classifier App
 
 ```shell
-# in development
+cd classifier-app
+docker compose up
 ```
+
+Frontend app is available at `localhost:8080` and backend app (model) is available at `localhost:5000`.
 
 ### Develop backend
 
