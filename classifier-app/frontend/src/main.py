@@ -1,6 +1,8 @@
 import pandas as pd
 import spotipy.exceptions
 import streamlit as st
+
+from classifier_handler import ClassifierHandler
 from spotipy_handler import SpotipyHandler
 
 st.title("Songs Classifier App :headphones: :notes:")
@@ -16,6 +18,7 @@ if submit_button:
     else:
         try:
             song = SpotipyHandler.search_song(song_name_input)
+            predicted_class = ClassifierHandler.send_request(song)
 
             col1, col2 = st.columns(2)
 
@@ -28,13 +31,22 @@ if submit_button:
 
             with col2:
 
-                st.header("Predicted class: pop/dance")
-
+                class_settings = {
+                    'pop/dance': ('green', ':cd:'),
+                    'rock': ('red', ':guitar:'),
+                    'chill/relax': ('blue', ':person_in_lotus_position:'),
+                    'classical': ('orange', ':violin:')
+                }
+                st.write(f"Predicted class: :{class_settings[predicted_class][0]}[{predicted_class}] {class_settings[predicted_class][1]}")
                 if song.audio_preview is not None:
                     st.write(":headphones: Here is a sample of the song:")
                     st.audio(song.audio_preview)
+                else:
+                    st.write("Sorry, sample for this song is not available :cry:")
 
             # plotting the song features
+            st.divider()
+            st.write("Data for your song:")
             df = pd.DataFrame({
                 'popularity': [song.features.popularity],
                 'duration_ms': [song.features.duration_ms],
@@ -48,9 +60,8 @@ if submit_button:
                 'instrumentalness': [song.features.instrumentalness],
                 'valence': [song.features.valence],
                 'tempo': [song.features.tempo],
-            }, index=[song.name])
+            }, index=['Song'])
             st.dataframe(df)
         except spotipy.exceptions.SpotifyException:
             st.toast('Error!', icon="🚨")
             st.markdown("Sorry, there was an error getting your song from Spotify :cry:")
-
