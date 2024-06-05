@@ -1,5 +1,10 @@
 # Songs Classifier
 
+**Songs Classifier** is a project that consists of two parts.
+- In `Data analysis` you can find Jupyter notebook with data analysis of the dataset and a lot of insights into how the data looks like and how the machine learning models were trained.
+- In `Classifier App` you can find an app that uses `Streamlit`, `mlflow` and `spotipy` to allow users to classify songs from Spotify with trained Gradient Boosting Tree. Everything is running in containers.
+
+# How to run?
 ## Data analysis
 
 ```shell
@@ -21,7 +26,7 @@ docker compose up
 
 Frontend app is available at `localhost:8080` and backend app (model) is available at `localhost:5000`.
 
-### Develop backend
+### Develop backend (if you want to change the model)
 
 ```shell
 cd classifier-app/backend
@@ -45,3 +50,8 @@ Script prints out `runid` at the end.
 ```shell
 mlflow models serve --model-uri runs:/<runid>/GradBoostClassifier --no-conda -p 5000 -h 0.0.0.0
 ```
+
+# How does the app look like?
+
+![image](https://github.com/anras5/songs-classifier/assets/91278796/a227135e-1172-49f3-85dd-d59ac0a19a32)
+
